@@ -1,7 +1,6 @@
 const botSettings = require("./botsettings.json");
 const Discord = require('discord.js');
 const prefix = botSettings.prefix
-const ce = require("embed-creator");
 
 const bot = new Discord.Client();
 
@@ -27,15 +26,7 @@ bot.on('message', async message => {
     if(!command.startsWith(prefix)) return;
 
     if(command === `${prefix}userinfo`) {
-        let embed = msg.channel.send(ce(
-            "9B59B6", 
-            {"name": "msg.author.username"},
-            "null",
-            "This is the user's info!",
-            [{"name": "Full Username", "value": `${message.author.username}#${message.author.discriminator}`},
-             {"name": "ID", "value": `${message.author.id}`}]
-        ));
-        /*let embed = new Discord.RichEmbed();
+        let embed = new Discord.RichEmbed();
             .setAuthor(`${message.author.username}`);
             .setDescription("This is the user's info!");
             .setColor("#9B59B6");
@@ -43,7 +34,7 @@ bot.on('message', async message => {
             .addField("ID", `${message.author.id}`);
             .addField("Created At", `${message.author.createdAt}`);   
 
-        message.channel.sendEmbed(embed);*/
+        message.channel.sendEmbed(embed);
 
         return;
     }
